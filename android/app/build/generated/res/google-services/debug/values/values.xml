@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">935751311255-tchti9epc4bgn7g11p4s0fptl8o276dp.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">935751311255</string>
+    <string name="google_api_key" translatable="false">AIzaSyDwtbMyHPYnXZTsYA9V5yd2HdagB9Hc1V0</string>
+    <string name="google_app_id" translatable="false">1:935751311255:android:2a8c26d0a7ecfdc01f6ed2</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDwtbMyHPYnXZTsYA9V5yd2HdagB9Hc1V0</string>
+    <string name="google_storage_bucket" translatable="false">reversedminesweeper.firebasestorage.app</string>
+    <string name="project_id" translatable="false">reversedminesweeper</string>
+</resources>

@@ -1,0 +1,54 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+    // Add the Google Services plugin
+    id "com.google.gms.google-services"
+}
+
+android {
+    namespace = "com.example.reversed_minesweeper"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        // Specify your unique Application ID
+        applicationId = "com.example.reversed_minesweeper"
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            signingConfig = signingConfigs.debug
+            // Enable ProGuard for release builds if needed
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+// Add this block to apply the Google Services plugin
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:32.0.0') // Ensure Firebase BOM is added
+    implementation 'com.google.android.gms:play-services-auth:20.7.0' // Google Sign-In dependency
+}
+
+apply plugin: 'com.google.gms.google-services'
