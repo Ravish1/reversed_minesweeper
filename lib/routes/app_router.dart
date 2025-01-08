@@ -9,25 +9,26 @@ import 'route_constants.dart';
 import '../helpers/shared_pref.dart';
 
 class AppRouter {
+  static bool _isGuestLoggedIn = false;
+
   static final GoRouter router = GoRouter(
     initialLocation: RouteConstants.splash,
 
     redirect: (context, state) async {
       final isGoogleLoggedIn = await SharedPrefsHelper().isGoogleLoggedIn();
-      final isGuestLoggedIn = await SharedPrefsHelper().isGuestLoggedIn();
 
       // Handle splash screen
       if (state.matchedLocation == RouteConstants.splash) {
-        return null;
+        return null; // Let the splash screen load
       }
 
       // Redirect to login if neither Google nor guest login is active
-      if (!isGoogleLoggedIn && !isGuestLoggedIn && state.matchedLocation != RouteConstants.login) {
+      if (!isGoogleLoggedIn && !_isGuestLoggedIn && state.matchedLocation != RouteConstants.login) {
         return RouteConstants.login;
       }
 
       // Redirect to game if either Google or guest login is active
-      if ((isGoogleLoggedIn || isGuestLoggedIn) && state.matchedLocation == RouteConstants.login) {
+      if ((isGoogleLoggedIn || _isGuestLoggedIn) && state.matchedLocation == RouteConstants.login) {
         return RouteConstants.game;
       }
 
@@ -49,4 +50,9 @@ class AppRouter {
       ),
     ],
   );
+
+  // Setter for guest login
+  static void setGuestLogin(bool value) {
+    _isGuestLoggedIn = value;
+  }
 }

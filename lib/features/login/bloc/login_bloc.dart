@@ -37,7 +37,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       final UserCredential userCredential =
       await _firebaseAuth.signInWithCredential(credential);
       final User? user = userCredential.user;
-      print("Userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"+user!.email.toString());
 
 
       if (user != null) {
@@ -63,12 +62,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   void _onLoginAsGuest(
       LoginAsGuest event, Emitter<LoginState> emit) async {
-    print("LoginAsGuest event triggered");
 
     // Save guest login status
     await SharedPrefsHelper().saveGuestLoginStatus(isLoggedIn: true);
 
     emit(LoginSuccess(userName: "Guest", email: null));
-    print("LoginSuccess state emitted");
   }
 }

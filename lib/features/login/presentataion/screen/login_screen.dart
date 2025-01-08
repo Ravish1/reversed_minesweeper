@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reversed_minesweeper/features/game/bloc/game_bloc.dart';
 import 'package:reversed_minesweeper/features/game/presentation/screen/game_screen.dart';
+import '../../../../routes/app_router.dart';
 import '../../../../routes/route_constants.dart';
 import '../../bloc/login_bloc.dart';
 import '../../bloc/login_event.dart';
@@ -75,8 +76,7 @@ class LoginScreen extends StatelessWidget {
                   label: "Login as Guest",
                   icon: Icons.person,
                   onPressed: () {
-                    context.read<LoginBloc>().add(LoginAsGuest());
-                   // context.go(RouteConstants.splash);
+                    redirectToGameSCreen(context);
                   },
                 ),
               ],
@@ -85,5 +85,11 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void redirectToGameSCreen(BuildContext context) {
+    AppRouter.setGuestLogin(true); // Set the guest login flag
+
+    context.go(RouteConstants.game);
   }
 }
